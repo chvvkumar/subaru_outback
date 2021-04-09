@@ -1,0 +1,257 @@
+  - icon: 'mdi:car'
+    title: Car
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - entity: ''
+                hold_action:
+                  action: more-info
+                icon: 'mdi:refresh'
+                icon_height: 32px
+                name: Refresh
+                show_icon: true
+                show_name: true
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: subaru.fetch
+                  service_data:
+                    vin: <YOUR_VIN_HERE>
+                type: button
+              - entity: ''
+                hold_action:
+                  action: more-info
+                icon: 'mdi:car-connected'
+                icon_height: 32px
+                name: Poll Vehicle
+                show_icon: true
+                show_name: true
+                show_state: false
+                tap_action:
+                  action: call-service
+                  confirmation:
+                    text: Poll Vehicle?
+                  service: subaru.update
+                  service_data:
+                    vin: <YOUR_VIN_HERE>
+                type: button
+            title: Update Data
+          - type: vertical-stack
+            title: Remote Commands
+            cards:
+              - cards:
+                  - icon: 'mdi:lock'
+                    icon_height: 32px
+                    name: Lock
+                    show_icon: true
+                    show_name: true
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Lock Doors?
+                      service: subaru.lock
+                      service_data:
+                        vin: <YOUR_VIN_HERE>
+                    type: button
+                  - entity: ''
+                    icon: 'mdi:lock-open-variant'
+                    icon_height: 32px
+                    name: Unlock
+                    show_icon: true
+                    show_name: true
+                    show_state: false
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Unlock Doors?
+                      service: subaru.unlock
+                      service_data:
+                        vin: <YOUR_VIN_HERE>
+                    type: button
+                type: horizontal-stack
+              - cards:
+                  - entity: ''
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:lightbulb-on'
+                    icon_height: 32px
+                    name: Flash Lights
+                    show_icon: true
+                    show_name: true
+                    show_state: false
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Flash lights?
+                      service: subaru.lights
+                      service_data:
+                        vin: <YOUR_VIN_HERE>
+                    type: button
+                  - entity: ''
+                    hold_action:
+                      action: more-info
+                    icon_height: 32px
+                    icon: 'mdi:lightbulb-off'
+                    name: Stop Lights
+                    show_icon: true
+                    show_name: true
+                    show_state: false
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Stop lights?
+                      service: subaru.lights_stop
+                      service_data:
+                        vin: <YOUR_VIN_HERE>
+                    type: button
+                type: horizontal-stack
+              - cards:
+                  - entity: ''
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:volume-high'
+                    icon_height: 32px
+                    name: Sound Horn
+                    show_icon: true
+                    show_name: true
+                    show_state: false
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Sound horn?
+                      service: subaru.horn
+                      service_data:
+                        vin: <YOUR_VIN_HERE>
+                    type: button
+                  - entity: ''
+                    hold_action:
+                      action: more-info
+                    icon_height: 32px
+                    icon: 'mdi:volume-off'
+                    name: Stop Horn
+                    show_icon: true
+                    show_name: true
+                    show_state: false
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Stop horn?
+                      service: subaru.horn_stop
+                      service_data:
+                        vin: <YOUR_VIN_HERE>
+                    type: button
+                type: horizontal-stack
+              - cards:
+                  - type: button
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:power'
+                    icon_height: 32px
+                    name: Remote Start
+                    show_icon: true
+                    show_name: true
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Remote Start?
+                      service: subaru.remote_start
+                      service_data:
+                        vin: <YOUR_VIN_HERE>
+                  - entity: ''
+                    hold_action:
+                      action: more-info
+                    icon: 'mdi:stop'
+                    icon_height: 32px
+                    name: Remote Stop
+                    show_icon: true
+                    show_name: true
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Remote Stop?
+                      service: subaru.remote_stop
+                      service_data:
+                        vin: <YOUR_VIN_HERE>
+                    type: button
+                type: horizontal-stack
+      - type: vertical-stack
+        cards:
+          - type: picture-elements
+            image: 'https://HOME_ASSISTANT_SERVER/local/car.png'
+            elements:
+              - type: state-label
+                entity: sensor.2020_outback_onyx_xt_tire_pressure_rr
+                style:
+                  top: 75%
+                  left: 13%
+              - type: state-label
+                entity: sensor.2020_outback_onyx_xt_tire_pressure_rl
+                style:
+                  top: 75%
+                  left: 39%
+              - type: state-label
+                entity: sensor.2020_outback_onyx_xt_tire_pressure_fr
+                style:
+                  top: 83%
+                  left: 57%
+              - type: state-label
+                entity: sensor.2020_outback_onyx_xt_tire_pressure_fl
+                style:
+                  top: 80%
+                  left: 81%
+              - type: state-label
+                entity: sensor.2020_outback_onyx_xt_odometer
+                title: Odometer
+                style:
+                  top: 20%
+                  left: 90%
+          - type: horizontal-stack
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: binary_sensor.2020_outback_onyx_xt_ignition
+                name: Ignition
+                show_state: false
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: lock.2020_outback_onyx_xt_door_lock
+                show_state: true
+                name: Door Lock
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.2020_outback_onyx_xt_12v_battery_voltage
+                min: 11
+                max: 15
+                severity:
+                  green: 12
+                  yellow: 11.5
+                  red: 11
+                name: Battery
+              - type: gauge
+                entity: sensor.2020_outback_onyx_xt_avg_fuel_consumption
+                min: 15
+                name: Avg Fuel Consumption
+                max: 30
+                severity:
+                  green: 25
+                  yellow: 23
+                  red: 20
+      - type: vertical-stack
+        cards:
+          - type: map
+            entities:
+              - entity: device_tracker.2020_outback_onyx_xt_location
+            dark_mode: true
+            hours_to_show: 24
+            default_zoom: 12
+            title: Outback Location
+            aspect_ratio: '3:2'
+          - type: entity
+            entity: sensor.2020_outback_onyx_xt_odometer
+            unit: Miles
