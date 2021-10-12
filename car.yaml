@@ -52,9 +52,10 @@
                       action: call-service
                       confirmation:
                         text: Lock Doors?
-                      service: subaru.lock
-                      service_data:
-                        vin: <YOUR_VIN_HERE>
+                      service: lock.lock
+                      service_data: {}
+                      target:
+                        entity_id: <YOUR VEHICLE ENTITY>
                     type: button
                   - entity: ''
                     icon: 'mdi:lock-open-variant'
@@ -67,9 +68,10 @@
                       action: call-service
                       confirmation:
                         text: Unlock Doors?
-                      service: subaru.unlock
-                      service_data:
-                        vin: <YOUR_VIN_HERE>
+                      service: lock.unlock
+                      service_data: {}
+                      target:
+                        entity_id: <YOUR VEHICLE ENTITY>
                     type: button
                 type: horizontal-stack
               - cards:
