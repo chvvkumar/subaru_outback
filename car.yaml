@@ -1,4 +1,1459 @@
-  - icon: 'mdi:car'
+custom_header:
+  button_text:
+    menu: '{{ dayNameShort }}. {{ monthNameShort }}. {{ dayNum }} {{ year4d }}'
+  header_text: HA
+  hidden_tab_redirect: false
+  chevrons: false
+  shadow: false
+  disabled_mode: true
+views:
+  - title: ''
+    path: overview
+    icon: mdi:view-dashboard
+    panel: false
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - type: section
+                label: Living Room
+              - type: custom:slider-entity-row
+                entity: light.living_room_main_lights
+                toggle: true
+                state_color: true
+                full_row: false
+              - type: section
+                label: Office
+              - type: custom:slider-entity-row
+                entity: light.office_main_lights
+                toggle: true
+                state_color: true
+                full_row: false
+              - type: section
+                label: Kitchen & Dining Room
+              - type: custom:slider-entity-row
+                entity: light.dining_room_main_lights
+                toggle: true
+                state_color: true
+              - type: custom:slider-entity-row
+                entity: light.kitchen_counter
+                toggle: true
+                state_color: true
+              - type: custom:slider-entity-row
+                entity: light.under_cabinet_lights
+                toggle: true
+                state_color: true
+              - type: custom:slider-entity-row
+                entity: light.kitchen_accent_lights
+                toggle: true
+                state_color: true
+              - type: section
+                label: Bedroom
+              - type: custom:slider-entity-row
+                entity: light.bedroomnightstand_zha_group
+                state_color: true
+                toggle: true
+                name: Bedroom
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.bathroomvanity_zha_group
+                state_color: true
+                name: Bathroom
+              - type: section
+                label: Upstairs
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.upstairs_nightstand_lights_zha_group
+                state_color: true
+              - type: section
+                label: Outdoors
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.porch_light
+                state_color: true
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.deck_upper
+                state_color: true
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.deck_lower
+                state_color: true
+              - type: section
+                label: Basement
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.basement_recessed_lights_zha_group
+                state_color: true
+                name: Basement Lights
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.hvac_lab_zha_group
+                state_color: true
+                name: Lab and HVAC Light
+              - type: section
+                label: Misc.
+              - entity: switch.plant_light
+                state_color: true
+              - entity: switch.shelf_light
+                state_color: true
+              - type: section
+                label: Media
+              - entity: media_player.sony_xbr_55x950g
+                state_color: true
+                icon: mdi:television
+              - entity: media_player.denon_avr_s750h
+                state_color: true
+                icon: mdi:speaker-multiple
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: switch.living_room_vornado
+                tap-action:
+                  action: toggle
+                state:
+                  - value: 'on'
+                    color: orange
+                    styles:
+                      icon:
+                        - animation:
+                            - rotating 5s linear infinite
+                hold_action:
+                  action: more-info
+              - type: custom:button-card
+                entity: switch.big_vornado
+                tap-action:
+                  action: toggle
+                state:
+                  - value: 'on'
+                    color: orange
+                    styles:
+                      icon:
+                        - animation:
+                            - rotating 5s linear infinite
+                hold_action:
+                  action: more-info
+              - type: custom:button-card
+                entity: switch.laundry_fan
+                tap-action:
+                  action: toggle
+                state:
+                  - value: 'on'
+                    color: orange
+                    styles:
+                      icon:
+                        - animation:
+                            - rotating 5s linear infinite
+                hold_action:
+                  action: more-info
+              - type: custom:button-card
+                entity: switch.basement_fan
+                tap-action:
+                  action: toggle
+                state:
+                  - value: 'on'
+                    color: orange
+                    styles:
+                      icon:
+                        - animation:
+                            - rotating 5s linear infinite
+                hold_action:
+                  action: more-info
+              - type: custom:button-card
+                entity: switch.bedroom_humidifier_on_off
+                tap-action:
+                  action: toggle
+                state:
+                  - value: 'on'
+                    color: orange
+                hold_action:
+                  action: more-info
+          - type: vertical-stack
+            cards:
+              - type: custom:slider-entity-row
+                entity: fan.winix_living_room
+                toggle: true
+                state_color: true
+                full_row: false
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    tap_action:
+                      action: call-service
+                      service: fan.set_preset_mode
+                      service_data:
+                        preset_mode: Auto
+                      target:
+                        entity_id: fan.winix_living_room
+                    entity: fan.winix_living_room
+                    name: Auto
+                    show_state: false
+                    icon: mdi:fan-auto
+                  - type: button
+                    tap_action:
+                      action: call-service
+                      service: fan.set_preset_mode
+                      service_data:
+                        preset_mode: Sleep
+                      target:
+                        entity_id: fan.winix_living_room
+                    entity: fan.winix_living_room
+                    name: Sleep
+                    show_state: false
+                    icon: mdi:power-sleep
+                  - type: button
+                    tap_action:
+                      action: call-service
+                      service: winix.plasmawave_toggle
+                      service_data:
+                        entity_id: fan.winix_living_room
+                      target: {}
+                    entity: fan.winix_living_room
+                    show_state: false
+                    name: PlasmaWave
+                    icon: mdi:sine-wave
+          - type: glance
+            show_state: false
+            show_name: false
+            show_icon: true
+            theme: Google - Dark
+            entities:
+              - entity: script.blinds_down
+                name: Down
+                tap_action:
+                  action: call-service
+                  service: script.blinds_down
+                  service_data:
+                    entity_id: script.blinds_down
+              - entity: script.living_room_blinds_up
+                name: Up
+                tap_action:
+                  action: call-service
+                  service: script.living_room_blinds_up
+                  service_data:
+                    entity_id: script.living_room_blinds_up
+            title: Livingroom Blinds
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-cover-card
+                entity: cover.dining_room_left_curtain_curtain
+                fill_container: false
+                show_position_control: false
+                show_tilt_position_control: false
+                show_buttons_control: true
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: toggle
+                double_tap_action:
+                  action: none
+              - type: custom:mushroom-cover-card
+                entity: cover.dining_room_right_curtain_curtain
+                fill_container: false
+                show_position_control: false
+                show_tilt_position_control: false
+                show_buttons_control: true
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: toggle
+                double_tap_action:
+                  action: none
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: more-info
+                entity: binary_sensor.dining_room_door_ias_zone
+                show_state: true
+                name: Dining Room Door
+              - type: custom:mushroom-cover-card
+                entity: cover.opengarage
+                fill_container: true
+                show_position_control: false
+                show_tilt_position_control: false
+                show_buttons_control: true
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: toggle
+                double_tap_action:
+                  action: none
+                name: Garage
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.aquarium_power_watts
+                min: 0
+                max: 100
+                name: Aquarium
+                severity:
+                  green: 50
+                  yellow: 75
+                  red: 100
+              - type: gauge
+                entity: sensor.tasmotawork_energy_power
+                min: 0
+                max: 200
+                name: Office
+                severity:
+                  green: 100
+                  yellow: 150
+                  red: 200
+              - type: gauge
+                entity: sensor.bedroom_humidifier_smartenergy_metering
+                min: 0
+                max: 300
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.tasmotalab_energy_power
+                min: 0
+                max: 200
+                name: Lab
+                severity:
+                  green: 100
+                  yellow: 150
+                  red: 200
+              - type: gauge
+                entity: sensor.living_room_vornado_power
+                min: 0
+                max: 100
+              - type: gauge
+                entity: sensor.3d_printer_power
+                min: 0
+                max: 100
+                name: Prusa Mini+
+          - type: picture-elements
+            image: /local/floorplan_main_nocar_hd.png
+            elements:
+              - type: state-icon
+                entity: light.bedroom_nightstand_lights
+                style:
+                  top: 19%
+                  left: 19%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-label
+                entity: sensor.bedroom_temperature
+                style:
+                  top: 31%
+                  left: 23%
+                  color: '#000'
+                  text-align: center
+                  font-weight: bold
+              - type: state-icon
+                entity: light.bathroom_vanity_lights
+                style:
+                  top: 17%
+                  left: 39.5%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: binary_sensor.bathroom_motion
+                style:
+                  top: 13.7%
+                  left: 35%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+              - type: state-icon
+                entity: light.living_room_main_lights
+                style:
+                  top: 51%
+                  left: 26%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: switch.living_room_vornado
+                style:
+                  top: 69%
+                  left: 26%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-label
+                entity: sensor.basement_temperature
+                style:
+                  top: 61%
+                  left: 26.5%
+                  color: '#000'
+                  text-align: center
+                  font-weight: bold
+              - type: state-icon
+                entity: light.dining_room_main_lights
+                style:
+                  top: 86%
+                  left: 22.5%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: light.under_cabinet_lights
+                style:
+                  top: 91.5%
+                  left: 42.5%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: light.kitchen_counter
+                style:
+                  top: 91.5%
+                  left: 31.7%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: binary_sensor.lumi_lumi_sensor_motion_aq2_ias_zone
+                style:
+                  top: 86%
+                  left: 38%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+              - type: state-icon
+                entity: light.office_main_lights
+                style:
+                  top: 86%
+                  left: 54%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: light.lab
+                style:
+                  top: 55%
+                  left: 40.5%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: light.hvac
+                style:
+                  top: 59%
+                  left: 40.5%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: light.porch_light
+                style:
+                  top: 55%
+                  left: 61%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: light.deck_upper
+                style:
+                  top: 80%
+                  left: 12%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                tap_action:
+                  action: toggle
+              - type: state-icon
+                entity: cover.opengarage
+                style:
+                  top: 31%
+                  left: 66%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                  transform: translate(-50%, -50%) scale(2, 2)
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.opengarage_vehicle
+                    state: 'on'
+                elements:
+                  - type: state-icon
+                    entity: binary_sensor.opengarage_vehicle
+                    style:
+                      top: 23%
+                      left: 58%
+                      '--paper-item-icon-color': magenta
+                      '--paper-item-icon-active-color': green
+                      transform: translate(-50%, -50%) scale(2, 2)
+              - type: state-label
+                entity: sensor.home_office_temperature
+                style:
+                  top: 80%
+                  left: 54%
+                  color: '#000'
+                  text-align: center
+                  font-weight: bold
+              - type: state-icon
+                entity: switch.big_vornado
+                style:
+                  top: 31%
+                  left: 27%
+                  '--paper-item-icon-color': black
+                  '--paper-item-icon-active-color': red
+                  transform: scale(0.75,0.75)
+                tap_action:
+                  action: toggle
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:canvas-gauge-card
+                entity: sensor.my_ecobee_temperature
+                card_height: 220
+                gauge:
+                  type: radial-gauge
+                  title: Temperature (°F)
+                  width: null
+                  height: 220
+                  borderShadowWidth: 0
+                  borderOuterWidth: 0
+                  borderMiddleWidth: 0
+                  borderInnerWidth: 0
+                  needleType: arrow
+                  minValue: 60
+                  maxValue: 85
+                  startAngle: 43
+                  ticksAngle: 275
+                  valueBox: true
+                  valueBoxBorderRadius: 5
+                  colorValueBoxRect: '#222'
+                  colorValueBoxRectEnd: '#333'
+                  valueDec: 1
+                  valueInt: 0
+                  majorTicks:
+                    - '60'
+                    - '65'
+                    - '70'
+                    - '75'
+                    - '80'
+                    - '85'
+                  minorTicks: 5
+                  strokeTicks: true
+                  highlights:
+                    - from: 60
+                      to: 65
+                      color: '#102f3c'
+                    - from: 65
+                      to: 70
+                      color: '#2eaadc'
+                    - from: 70
+                      to: 75
+                      color: '#2edc50'
+                    - from: 75
+                      to: 80
+                      color: '#d54058'
+                    - from: 80
+                      to: 85
+                      color: '#881f00'
+                  borders: false
+              - type: custom:canvas-gauge-card
+                entity: sensor.my_ecobee_humidity
+                card_height: 220
+                gauge:
+                  type: radial-gauge
+                  title: Humidity (%)
+                  width: null
+                  height: 220
+                  borderShadowWidth: 0
+                  borderOuterWidth: 0
+                  borderMiddleWidth: 0
+                  borderInnerWidth: 0
+                  needleType: arrow
+                  minValue: 10
+                  maxValue: 60
+                  startAngle: 43
+                  ticksAngle: 275
+                  valueBox: true
+                  valueBoxBorderRadius: 5
+                  colorValueBoxRect: '#222'
+                  colorValueBoxRectEnd: '#333'
+                  valueDec: 1
+                  valueInt: 0
+                  majorTicks:
+                    - '10'
+                    - '20'
+                    - '30'
+                    - '40'
+                    - '50'
+                    - '60'
+                  minorTicks: 10
+                  strokeTicks: true
+                  highlights:
+                    - from: 10
+                      to: 20
+                      color: '#f28417'
+                    - from: 20
+                      to: 30
+                      color: '#d89d00'
+                    - from: 30
+                      to: 40
+                      color: '#35d54a'
+                    - from: 40
+                      to: 50
+                      color: '#00ac8c'
+                    - from: 50
+                      to: 60
+                      color: '#2a4858'
+                  borders: false
+          - type: vertical-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: horizontal-stack
+                    cards:
+                      - show_name: true
+                        show_icon: true
+                        type: button
+                        tap_action:
+                          action: toggle
+                        entity: binary_sensor.lumi_lumi_sensor_motion_aq2_ias_zone
+                        name: Kitchen
+                      - type: button
+                        tap_action:
+                          action: toggle
+                        entity: binary_sensor.bathroom_motion
+                        show_state: false
+                        name: Bathroom
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  confirmation:
+                    text: Are you sure you want to turn on vacation mode?
+                  action: call-service
+                  service: automation.trigger
+                  service_data: {}
+                  target:
+                    entity_id: automation.vacation_mode_on
+                icon: fas:umbrella-beach
+                name: Turn ON Vacation Mode
+                icon_height: 100px
+                entity: automation.vacation_mode_on
+                show_state: false
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  confirmation:
+                    text: Are you sure you want to turn off vacation mode?
+                  action: call-service
+                  service: automation.trigger
+                  service_data: {}
+                  target:
+                    entity_id: automation.vacation_mode_off
+                icon: mdi:umbrella-beach-outline
+                name: Turn OFF Vacation Mode
+                icon_height: 100px
+                entity: automation.vacation_mode_off
+  - theme: Backend-selected
+    title: ''
+    path: weather
+    icon: mdi:weather-lightning-rainy
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.airnow_aqi
+                name: Outdoor AQI
+                unit: ' '
+                needle: true
+                min: 20
+                max: 500
+                segments:
+                  - from: 0
+                    color: '#00e400'
+                  - from: 51
+                    color: '#ffff00'
+                  - from: 101
+                    color: '#ff7e00'
+                  - from: 151
+                    color: '#ff0000'
+                  - from: 201
+                    color: '#8f3f97'
+                  - from: 301
+                    color: '#800000'
+          - type: vertical-stack
+            cards:
+              - type: custom:hourly-weather
+                entity: weather.openweathermap
+                num_segments: '12'
+                show_wind: speed
+                show_precipitation_amounts: true
+                show_precipitation_probability: true
+              - type: horizontal-stack
+                cards:
+                  - type: entity
+                    entity: sensor.gw1100b_v2_2_3_dewpoint
+                  - type: entity
+                    state_color: false
+                    entity: sensor.astroweather_seeing
+                    name: Seeing
+                  - type: entity
+                    entity: sensor.astroweather_transparency
+                    name: Transparency
+          - type: horizontal-stack
+            cards:
+              - type: custom:canvas-gauge-card
+                entity: sensor.outdoor_temperature
+                card_height: 220
+                gauge:
+                  type: radial-gauge
+                  title: Temperature (°F)
+                  width: null
+                  height: 220
+                  borderShadowWidth: 0
+                  borderOuterWidth: 0
+                  borderMiddleWidth: 0
+                  borderInnerWidth: 0
+                  needleType: arrow
+                  minValue: -10
+                  maxValue: 110
+                  startAngle: 43
+                  ticksAngle: 275
+                  valueBox: true
+                  valueBoxBorderRadius: 5
+                  colorValueBoxRect: '#222'
+                  colorValueBoxRectEnd: '#333'
+                  valueDec: 1
+                  valueInt: 0
+                  majorTicks:
+                    - '-10'
+                    - '00'
+                    - '10'
+                    - '20'
+                    - '30'
+                    - '40'
+                    - '50'
+                    - '60'
+                    - '70'
+                    - '80'
+                    - '90'
+                    - '100'
+                    - '110'
+                  minorTicks: 5
+                  strokeTicks: true
+                  highlights:
+                    - from: -10
+                      to: 10
+                      color: '#0000b3'
+                    - from: 10
+                      to: 30
+                      color: '#0020ff'
+                    - from: 30
+                      to: 50
+                      color: '#009fff'
+                    - from: 50
+                      to: 60
+                      color: '#48b5c4'
+                    - from: 60
+                      to: 70
+                      color: '#76c68f'
+                    - from: 70
+                      to: 80
+                      color: '#a6d75b'
+                    - from: 80
+                      to: 90
+                      color: '#ffb55a'
+                    - from: 90
+                      to: 100
+                      color: '#b04238'
+                    - from: 100
+                      to: 110
+                      color: '#991f17'
+                  borders: false
+              - type: custom:canvas-gauge-card
+                entity: sensor.outdoor_humidity
+                card_height: 220
+                gauge:
+                  type: radial-gauge
+                  title: Humidity (%)
+                  width: null
+                  height: 220
+                  borderShadowWidth: 0
+                  borderOuterWidth: 0
+                  borderMiddleWidth: 0
+                  borderInnerWidth: 0
+                  needleType: arrow
+                  minValue: 10
+                  maxValue: 100
+                  startAngle: 43
+                  ticksAngle: 275
+                  valueBox: true
+                  valueBoxBorderRadius: 5
+                  colorValueBoxRect: '#222'
+                  colorValueBoxRectEnd: '#333'
+                  valueDec: 1
+                  valueInt: 0
+                  majorTicks:
+                    - '10'
+                    - '20'
+                    - '30'
+                    - '40'
+                    - '50'
+                    - '60'
+                    - '70'
+                    - '80'
+                    - '90'
+                    - '100'
+                  minorTicks: 10
+                  strokeTicks: true
+                  highlights:
+                    - from: 10
+                      to: 30
+                      color: '#05192C'
+                    - from: 30
+                      to: 40
+                      color: '#D0AE8B'
+                    - from: 40
+                      to: 60
+                      color: '#E8E4E2'
+                    - from: 60
+                      to: 80
+                      color: '#73CCD8'
+                    - from: 80
+                      to: 100
+                      color: '#52B1D2'
+                  borders: false
+          - type: custom:canvas-gauge-card
+            entity: sensor.gw1100b_v2_2_3_absolute_pressure
+            card_height: 220
+            gauge:
+              type: radial-gauge
+              animation: true
+              animationDuration: 1500
+              animationRule: quint
+              title: inHg
+              width: null
+              height: 220
+              borderShadowWidth: 0
+              borderOuterWidth: 0
+              borderMiddleWidth: 0
+              borderInnerWidth: 0
+              needleType: arrow
+              minValue: 28.8
+              maxValue: 31
+              startAngle: 43
+              ticksAngle: 275
+              valueBox: true
+              valueBoxBorderRadius: 5
+              colorValueBoxRect: '#222'
+              colorValueBoxRectEnd: '#333'
+              valueDec: 1
+              valueInt: 0
+              majorTicks:
+                - '28.8'
+                - '29.0'
+                - '29.2'
+                - '29.4'
+                - '29.6'
+                - '29.8'
+                - '30.0'
+                - '30.2'
+              minorTicks: null
+              strokeTicks: true
+              highlights:
+                - from: 29
+                  to: 34
+                  color: '#fff'
+              borders: false
+          - type: gauge
+            entity: sensor.rain_rate
+            name: Current Rain Rate
+            min: 0
+            severity:
+              green: 0.1
+              yellow: 0.3
+              red: 0.3
+            needle: true
+            max: 3
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.hourly_rain_rate
+                icon: mdi:clock-in
+              - type: entity
+                entity: sensor.daily_rain_rate
+                name: Daily
+                icon: mdi:calendar-today
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.weekly_rain_rate
+                name: Weekly
+                icon: mdi:calendar-week
+              - type: entity
+                entity: sensor.monthly_rain_rate
+                name: Monthly
+                icon: mdi:calendar-month
+          - type: custom:mini-graph-card
+            icon: mdi:water
+            name: 24 Hourly Rainfall
+            show:
+              graph: bar
+            hours_to_show: 24
+            aggregate_func: max
+            group_by: hour
+            entities:
+              - entity: sensor.hourly_rain_rate
+                color: '#4a6583 '
+          - type: custom:mini-graph-card
+            icon: mdi:water
+            name: 7 Daily Rainfall
+            show:
+              graph: bar
+            hours_to_show: 168
+            aggregate_func: max
+            group_by: date
+            entities:
+              - entity: sensor.daily_rain_rate
+                color: '#4a6583 '
+          - type: custom:mini-graph-card
+            icon: mdi:thermometer-low
+            name: 7 Day Soil Temp
+            show:
+              graph: bar
+            hours_to_show: 720
+            aggregate_func: avg
+            group_by: date
+            entities:
+              - entity: sensor.soil_temperature_1
+                color: '#4a6583 '
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.soil_temperature_1
+                name: Soil@4"
+                state_color: false
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.6hydrangea
+              - type: entity
+                entity: sensor.soil_moisture_4
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.soil_moisture_5
+              - type: entity
+                name: Back Yard
+                entity: sensor.soil_moisture_3
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.eggplants
+              - type: entity
+                entity: sensor.monstera_moisture
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: vertical-stack
+                    cards:
+                      - type: vertical-stack
+                        cards:
+                          - type: entity
+                            entity: >-
+                              sensor.thermal_comfort_outdoors_winter_scharlau_perception
+                          - type: entity
+                            entity: sensor.thermal_comfort_outdoors_humidex_perception
+                            name: Outdoors
+                            icon: temperature
+                          - type: entity
+                            entity: sensor.thermal_comfort_living_room_perception
+                          - type: entity
+                            entity: sensor.thermal_comfort_bedroom_perception
+                          - type: custom:dual-gauge-card
+                            title: Humidity
+                            min: 40
+                            max: 65
+                            outer:
+                              entity: sensor.midea_cube_humidity
+                              label: Current
+                              unit: '%'
+                            inner:
+                              entity: humidifier.midea_cube
+                              label: Target
+                              attribute: humidity
+                              unit: '%'
+                            colors:
+                              - color: var(--label-badge-blue)
+                                value: 45
+                              - color: var(--label-badge-green)
+                                value: 50
+                              - color: var(--label-badge-green)
+                                value: 55
+                              - color: var(--label-badge-red)
+                                value: 60
+                              - color: var(--paper-orange-a700)
+                                value: 65
+                          - type: horizontal-stack
+                            cards:
+                              - type: entity
+                                entity: sensor.midea_cube_water_level
+                              - type: entity
+                                entity: binary_sensor.midea_cube_tank_full
+                          - type: entity
+                            entity: sensor.overall_humidity
+                          - type: horizontal-stack
+                            cards:
+                              - type: entity
+                                entity: sensor.my_ecobee_humidity
+                              - type: entity
+                                entity: sensor.gw1100b_v2_2_3_indoor_humidity
+                                name: Ecowitt Indoor
+                              - type: entity
+                                entity: >-
+                                  sensor.temperature_humidity_sensor_5029_humidity
+                                name: Mi Indoor
+                          - type: horizontal-stack
+                            cards:
+                              - type: entity
+                                entity: sensor.lumi_lumi_weather_humidity
+                              - type: entity
+                                entity: sensor.basement_humidity
+                          - type: horizontal-stack
+                            cards:
+                              - type: entity
+                                entity: sensor.garage_humidity
+                              - type: entity
+                                entity: sensor.lumi_lumi_weather_humidity_2
+                              - type: entity
+                                entity: humidifier.bedroom_humidifier
+                                attribute: current_humidity
+                                unit: '%'
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            entity: binary_sensor.living_room_occupancy
+                            color_type: icon
+                            color: rgb(255, 255, 255)
+                            icon: fas:couch
+                            name: Living Room
+                            size: 40%
+                            aspect_ratio: 1/1
+                            state:
+                              - value: 'on'
+                                color: aqua
+                              - value: 'off'
+                                color: black
+                            styles:
+                              card:
+                                - height: 125px
+                          - type: custom:button-card
+                            entity: binary_sensor.bedroom_occupancy
+                            color_type: icon
+                            color: rgb(255, 255, 255)
+                            icon: fas:bed
+                            size: 40%
+                            name: Bedroom
+                            aspect_ratio: 1/1
+                            state:
+                              - value: 'on'
+                                color: aqua
+                              - value: 'off'
+                                color: black
+                            styles:
+                              card:
+                                - height: 125px
+                          - type: custom:button-card
+                            entity: binary_sensor.home_office_occupancy
+                            color_type: icon
+                            color: rgb(255, 255, 255)
+                            icon: fas:laptop-house
+                            size: 40%
+                            name: Office
+                            aspect_ratio: 1/1
+                            state:
+                              - value: 'on'
+                                color: aqua
+                              - value: 'off'
+                                color: black
+                            styles:
+                              card:
+                                - height: 125px
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mini-graph-card
+                            entities:
+                              - sensor.living_room_temperature
+                            name: Ecobee
+                            line_color: blue
+                            line_width: 8
+                            font_size: 75
+                            font_size_header: 10
+                            align_header: left
+                            align_icon: right
+                            height: 200
+                            icon: fas:couch
+                            show:
+                              icon: true
+                              name: false
+                              name_adaptive_color: true
+                              icon_adaptive_color: true
+                              state: true
+                            color_thresholds:
+                              - value: 65
+                                color: '#00f4ff'
+                              - value: 66
+                                color: '#00efe8'
+                              - value: 67
+                                color: '#00e9cd'
+                              - value: 68
+                                color: '#00e2b0'
+                              - value: 69
+                                color: '#34db90'
+                              - value: 70
+                                color: '#54d26f'
+                              - value: 71
+                                color: '#6ec84d'
+                              - value: 72
+                                color: '#84bd25'
+                              - value: 73
+                                color: '#99b100'
+                              - value: 74
+                                color: '#ada300'
+                              - value: 75
+                                color: '#c09300'
+                              - value: 76
+                                color: '#d28000'
+                              - value: 77
+                                color: '#e36800'
+                              - value: 78
+                                color: '#f34900'
+                              - value: 79
+                                color: '#f34900'
+                              - value: 80
+                                color: '#ff0000'
+                          - type: custom:mini-graph-card
+                            entities:
+                              - sensor.bedroom_temperature
+                            name: Bedroom
+                            line_color: '#e74c3c'
+                            line_width: 8
+                            font_size: 75
+                            font_size_header: 10
+                            align_header: left
+                            align_icon: right
+                            height: 200
+                            icon: fas:bed
+                            show:
+                              icon: true
+                              name: false
+                              name_adaptive_color: true
+                              icon_adaptive_color: true
+                              state: true
+                            color_thresholds:
+                              - value: 65
+                                color: '#00f4ff'
+                              - value: 66
+                                color: '#00efe8'
+                              - value: 67
+                                color: '#00e9cd'
+                              - value: 68
+                                color: '#00e2b0'
+                              - value: 69
+                                color: '#34db90'
+                              - value: 70
+                                color: '#54d26f'
+                              - value: 71
+                                color: '#6ec84d'
+                              - value: 72
+                                color: '#84bd25'
+                              - value: 73
+                                color: '#99b100'
+                              - value: 74
+                                color: '#ada300'
+                              - value: 75
+                                color: '#c09300'
+                              - value: 76
+                                color: '#d28000'
+                              - value: 77
+                                color: '#e36800'
+                              - value: 78
+                                color: '#f34900'
+                              - value: 79
+                                color: '#f34900'
+                              - value: 80
+                                color: '#ff0000'
+                          - type: custom:mini-graph-card
+                            entities:
+                              - sensor.home_office_temperature
+                            name: Office
+                            line_color: var(--accent-color)
+                            line_width: 8
+                            font_size: 75
+                            font_size_header: 10
+                            align_header: left
+                            align_icon: right
+                            height: 200
+                            icon: fas:laptop-house
+                            show:
+                              icon: true
+                              name: false
+                              name_adaptive_color: true
+                              icon_adaptive_color: true
+                              state: true
+                            color_thresholds:
+                              - value: 65
+                                color: '#00f4ff'
+                              - value: 66
+                                color: '#00efe8'
+                              - value: 67
+                                color: '#00e9cd'
+                              - value: 68
+                                color: '#00e2b0'
+                              - value: 69
+                                color: '#34db90'
+                              - value: 70
+                                color: '#54d26f'
+                              - value: 71
+                                color: '#6ec84d'
+                              - value: 72
+                                color: '#84bd25'
+                              - value: 73
+                                color: '#99b100'
+                              - value: 74
+                                color: '#ada300'
+                              - value: 75
+                                color: '#c09300'
+                              - value: 76
+                                color: '#d28000'
+                              - value: 77
+                                color: '#e36800'
+                              - value: 78
+                                color: '#f34900'
+                              - value: 79
+                                color: '#f34900'
+                              - value: 80
+                                color: '#ff0000'
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mini-graph-card
+                            entities:
+                              - sensor.basement_temperature
+                            line_color: var(--accent-color)
+                            line_width: 8
+                            font_size: 75
+                            font_size_header: 10
+                            align_header: left
+                            align_icon: right
+                            height: 200
+                            show:
+                              icon: true
+                              name: false
+                              name_adaptive_color: true
+                              icon_adaptive_color: true
+                              state: true
+                            color_thresholds:
+                              - value: 65
+                                color: '#00f4ff'
+                              - value: 66
+                                color: '#00efe8'
+                              - value: 67
+                                color: '#00e9cd'
+                              - value: 68
+                                color: '#00e2b0'
+                              - value: 69
+                                color: '#34db90'
+                              - value: 70
+                                color: '#54d26f'
+                              - value: 71
+                                color: '#6ec84d'
+                              - value: 72
+                                color: '#84bd25'
+                              - value: 73
+                                color: '#99b100'
+                              - value: 74
+                                color: '#ada300'
+                              - value: 75
+                                color: '#c09300'
+                              - value: 76
+                                color: '#d28000'
+                              - value: 77
+                                color: '#e36800'
+                              - value: 78
+                                color: '#f34900'
+                              - value: 79
+                                color: '#f34900'
+                              - value: 80
+                                color: '#ff0000'
+                          - type: custom:mini-graph-card
+                            entities:
+                              - sensor.basement_temperature1
+                            name: Garage
+                            line_color: var(--accent-color)
+                            line_width: 8
+                            font_size: 75
+                            font_size_header: 10
+                            align_header: left
+                            align_icon: right
+                            height: 200
+                            show:
+                              icon: true
+                              name: false
+                              name_adaptive_color: true
+                              icon_adaptive_color: true
+                              state: true
+                            color_thresholds:
+                              - value: 65
+                                color: '#00f4ff'
+                              - value: 66
+                                color: '#00efe8'
+                              - value: 67
+                                color: '#00e9cd'
+                              - value: 68
+                                color: '#00e2b0'
+                              - value: 69
+                                color: '#34db90'
+                              - value: 70
+                                color: '#54d26f'
+                              - value: 71
+                                color: '#6ec84d'
+                              - value: 72
+                                color: '#84bd25'
+                              - value: 73
+                                color: '#99b100'
+                              - value: 74
+                                color: '#ada300'
+                              - value: 75
+                                color: '#c09300'
+                              - value: 76
+                                color: '#d28000'
+                              - value: 77
+                                color: '#e36800'
+                              - value: 78
+                                color: '#f34900'
+                              - value: 79
+                                color: '#f34900'
+                              - value: 80
+                                color: '#ff0000'
+                          - type: custom:mini-graph-card
+                            entities:
+                              - sensor.garage_temperature
+                            name: Garage
+                            line_color: var(--accent-color)
+                            line_width: 8
+                            font_size: 75
+                            font_size_header: 10
+                            align_header: left
+                            align_icon: right
+                            height: 200
+                            show:
+                              icon: true
+                              name: false
+                              name_adaptive_color: true
+                              icon_adaptive_color: true
+                              state: true
+                            color_thresholds:
+                              - value: 65
+                                color: '#00f4ff'
+                              - value: 66
+                                color: '#00efe8'
+                              - value: 67
+                                color: '#00e9cd'
+                              - value: 68
+                                color: '#00e2b0'
+                              - value: 69
+                                color: '#34db90'
+                              - value: 70
+                                color: '#54d26f'
+                              - value: 71
+                                color: '#6ec84d'
+                              - value: 72
+                                color: '#84bd25'
+                              - value: 73
+                                color: '#99b100'
+                              - value: 74
+                                color: '#ada300'
+                              - value: 75
+                                color: '#c09300'
+                              - value: 76
+                                color: '#d28000'
+                              - value: 77
+                                color: '#e36800'
+                              - value: 78
+                                color: '#f34900'
+                              - value: 79
+                                color: '#f34900'
+                              - value: 80
+                                color: '#ff0000'
+                          - type: custom:mini-graph-card
+                            entities:
+                              - >-
+                                sensor.lumi_lumi_sensor_motion_aq2_device_temperature
+                            line_color: var(--accent-color)
+                            line_width: 8
+                            font_size: 75
+                            font_size_header: 10
+                            align_header: left
+                            align_icon: right
+                            height: 200
+                            show:
+                              icon: true
+                              name: false
+                              name_adaptive_color: true
+                              icon_adaptive_color: true
+                              state: true
+                            color_thresholds:
+                              - value: 65
+                                color: '#00f4ff'
+                              - value: 66
+                                color: '#00efe8'
+                              - value: 67
+                                color: '#00e9cd'
+                              - value: 68
+                                color: '#00e2b0'
+                              - value: 69
+                                color: '#34db90'
+                              - value: 70
+                                color: '#54d26f'
+                              - value: 71
+                                color: '#6ec84d'
+                              - value: 72
+                                color: '#84bd25'
+                              - value: 73
+                                color: '#99b100'
+                              - value: 74
+                                color: '#ada300'
+                              - value: 75
+                                color: '#c09300'
+                              - value: 76
+                                color: '#d28000'
+                              - value: 77
+                                color: '#e36800'
+                              - value: 78
+                                color: '#f34900'
+                              - value: 79
+                                color: '#f34900'
+                              - value: 80
+                                color: '#ff0000'
+  - icon: mdi:car
     title: Car
     badges: []
     cards:
@@ -6,63 +1461,189 @@
         cards:
           - type: horizontal-stack
             cards:
-              - entity: ''
-                hold_action:
-                  action: more-info
-                icon: 'mdi:refresh'
-                icon_height: 32px
-                name: Refresh
-                show_icon: true
-                show_name: true
-                show_state: false
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.garage_temperature
+                line_color: var(--accent-color)
+                line_width: 8
+                font_size: 75
+                font_size_header: 10
+                align_header: left
+                align_icon: right
+                height: 200
+                show:
+                  icon: true
+                  name: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                  state: true
+                color_thresholds:
+                  - value: 65
+                    color: '#00f4ff'
+                  - value: 66
+                    color: '#00efe8'
+                  - value: 67
+                    color: '#00e9cd'
+                  - value: 68
+                    color: '#00e2b0'
+                  - value: 69
+                    color: '#34db90'
+                  - value: 70
+                    color: '#54d26f'
+                  - value: 71
+                    color: '#6ec84d'
+                  - value: 72
+                    color: '#84bd25'
+                  - value: 73
+                    color: '#99b100'
+                  - value: 74
+                    color: '#ada300'
+                  - value: 75
+                    color: '#c09300'
+                  - value: 76
+                    color: '#d28000'
+                  - value: 77
+                    color: '#e36800'
+                  - value: 78
+                    color: '#f34900'
+                  - value: 79
+                    color: '#f34900'
+                  - value: 80
+                    color: '#ff0000'
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.garage_humidity
+                line_color: var(--accent-color)
+                line_width: 8
+                font_size: 75
+                font_size_header: 10
+                align_header: left
+                align_icon: right
+                height: 200
+                show:
+                  icon: true
+                  name: false
+                  name_adaptive_color: true
+                  icon_adaptive_color: true
+                  state: true
+                color_thresholds:
+                  - value: 65
+                    color: '#00f4ff'
+                  - value: 66
+                    color: '#00efe8'
+                  - value: 67
+                    color: '#00e9cd'
+                  - value: 68
+                    color: '#00e2b0'
+                  - value: 69
+                    color: '#34db90'
+                  - value: 70
+                    color: '#54d26f'
+                  - value: 71
+                    color: '#6ec84d'
+                  - value: 72
+                    color: '#84bd25'
+                  - value: 73
+                    color: '#99b100'
+                  - value: 74
+                    color: '#ada300'
+                  - value: 75
+                    color: '#c09300'
+                  - value: 76
+                    color: '#d28000'
+                  - value: 77
+                    color: '#e36800'
+                  - value: 78
+                    color: '#f34900'
+                  - value: 79
+                    color: '#f34900'
+                  - value: 80
+                    color: '#ff0000'
+          - type: horizontal-stack
+            cards:
+              - type: custom:hui-entities-card
+                entities:
+                  - card:
+                      entity: script.open_garage_door_and_start_car
+                    restrictions:
+                      pin:
+                        code: 1337
+                    type: custom:restriction-card
+                    row: true
+          - type: horizontal-stack
+            cards:
+              - type: button
                 tap_action:
-                  action: call-service
-                  service: subaru.fetch
-                  service_data:
-                    vin: <YOUR_VIN_HERE>
-                type: button
-              - entity: ''
-                hold_action:
                   action: more-info
-                icon: 'mdi:car-connected'
-                icon_height: 32px
-                name: Poll Vehicle
+                entity: cover.opengarage
+                show_state: true
+                hold_action:
+                  action: toggle
+                name: Open Garage
+              - show_name: true
                 show_icon: true
-                show_name: true
-                show_state: false
-                tap_action:
-                  action: call-service
-                  confirmation:
-                    text: Poll Vehicle?
-                  service: subaru.update
-                  service_data:
-                    vin: <YOUR_VIN_HERE>
                 type: button
-            title: Update Data
+                tap_action:
+                  action: toggle
+                entity: binary_sensor.garage_door_ias_zone
+                show_state: true
+                name: Zigbee
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: binary_sensor.opengarage_vehicle
+                show_state: false
+                icon: mdi:car
+                name: Car in garage?
+                show_name: false
           - type: vertical-stack
             title: Remote Commands
             cards:
               - cards:
-                  - icon: 'mdi:lock'
-                    icon_height: 32px
-                    name: Lock
+                  - show_name: true
                     show_icon: true
-                    show_name: true
+                    type: button
+                    hold_action:
+                      action: more-info
+                    icon: mdi:power
+                    icon_height: 32px
+                    name: Remote Start
                     tap_action:
                       action: call-service
                       confirmation:
-                        text: Lock Doors?
-                      service: lock.lock
+                        text: Remote Start?
+                      service: button.press
                       service_data: {}
                       target:
-                        entity_id: <YOUR VEHICLE ENTITY>
-                    type: button
-                  - entity: ''
-                    icon: 'mdi:lock-open-variant'
-                    icon_height: 32px
-                    name: Unlock
+                        entity_id: button.2020_outback_onyx_xt_remote_start
+                    theme: Google Dark Theme
+                    entity: button.2023_onyx_xt_remote_start
+                  - show_name: true
                     show_icon: true
-                    show_name: true
+                    entity: button.2023_onyx_xt_remote_stop
+                    hold_action:
+                      action: more-info
+                    icon: mdi:stop
+                    icon_height: 32px
+                    name: Remote Stop
+                    tap_action:
+                      action: call-service
+                      confirmation:
+                        text: Remote Stop?
+                      service: button.press
+                      service_data: {}
+                      target:
+                        entity_id: button.2020_outback_onyx_xt_remote_stop
+                    type: button
+                    theme: Google Dark Theme
+                type: horizontal-stack
+              - cards:
+                  - show_name: true
+                    show_icon: true
+                    entity: lock.2023_onyx_xt_door_locks
+                    icon: ''
+                    icon_height: 32px
+                    name: Locks
                     show_state: false
                     tap_action:
                       action: call-service
@@ -71,189 +1652,928 @@
                       service: lock.unlock
                       service_data: {}
                       target:
-                        entity_id: <YOUR VEHICLE ENTITY>
+                        entity_id: lock.2020_outback_onyx_xt_door_locks
                     type: button
-                type: horizontal-stack
-              - cards:
-                  - entity: ''
-                    hold_action:
-                      action: more-info
-                    icon: 'mdi:lightbulb-on'
-                    icon_height: 32px
-                    name: Flash Lights
-                    show_icon: true
-                    show_name: true
-                    show_state: false
-                    tap_action:
-                      action: call-service
-                      confirmation:
-                        text: Flash lights?
-                      service: subaru.lights
-                      service_data:
-                        vin: <YOUR_VIN_HERE>
-                    type: button
-                  - entity: ''
-                    hold_action:
-                      action: more-info
-                    icon_height: 32px
-                    icon: 'mdi:lightbulb-off'
-                    name: Stop Lights
-                    show_icon: true
-                    show_name: true
-                    show_state: false
-                    tap_action:
-                      action: call-service
-                      confirmation:
-                        text: Stop lights?
-                      service: subaru.lights_stop
-                      service_data:
-                        vin: <YOUR_VIN_HERE>
-                    type: button
-                type: horizontal-stack
-              - cards:
-                  - entity: ''
-                    hold_action:
-                      action: more-info
-                    icon: 'mdi:volume-high'
-                    icon_height: 32px
-                    name: Sound Horn
-                    show_icon: true
-                    show_name: true
-                    show_state: false
-                    tap_action:
-                      action: call-service
-                      confirmation:
-                        text: Sound horn?
-                      service: subaru.horn
-                      service_data:
-                        vin: <YOUR_VIN_HERE>
-                    type: button
-                  - entity: ''
-                    hold_action:
-                      action: more-info
-                    icon_height: 32px
-                    icon: 'mdi:volume-off'
-                    name: Stop Horn
-                    show_icon: true
-                    show_name: true
-                    show_state: false
-                    tap_action:
-                      action: call-service
-                      confirmation:
-                        text: Stop horn?
-                      service: subaru.horn_stop
-                      service_data:
-                        vin: <YOUR_VIN_HERE>
-                    type: button
-                type: horizontal-stack
-              - cards:
-                  - type: button
-                    hold_action:
-                      action: more-info
-                    icon: 'mdi:power'
-                    icon_height: 32px
-                    name: Remote Start
-                    show_icon: true
-                    show_name: true
-                    tap_action:
-                      action: call-service
-                      confirmation:
-                        text: Remote Start?
-                      service: subaru.remote_start
-                      service_data:
-                        vin: <YOUR_VIN_HERE>
-                  - entity: ''
-                    hold_action:
-                      action: more-info
-                    icon: 'mdi:stop'
-                    icon_height: 32px
-                    name: Remote Stop
-                    show_icon: true
-                    show_name: true
-                    tap_action:
-                      action: call-service
-                      confirmation:
-                        text: Remote Stop?
-                      service: subaru.remote_stop
-                      service_data:
-                        vin: <YOUR_VIN_HERE>
-                    type: button
+                    theme: Google Dark Theme
                 type: horizontal-stack
       - type: vertical-stack
         cards:
           - type: picture-elements
-            image: 'https://HOME_ASSISTANT_SERVER/local/car.png'
+            image: /local/car.png
             elements:
+              - type: state-icon
+                entity: binary_sensor.2023_onyx_xt_front_left_window
+                title: null
+                style:
+                  top: 33%
+                  left: 57%
+              - type: state-icon
+                entity: binary_sensor.2023_onyx_xt_front_right_window
+                title: null
+                style:
+                  top: 15%
+                  left: 35%
+              - type: state-icon
+                entity: binary_sensor.2023_onyx_xt_rear_left_window
+                title: null
+                style:
+                  top: 33%
+                  left: 25%
+              - type: state-icon
+                entity: binary_sensor.2023_onyx_xt_rear_right_window
+                title: null
+                style:
+                  top: 33%
+                  left: 36%
               - type: state-label
-                entity: sensor.2020_outback_onyx_xt_tire_pressure_rr
+                entity: sensor.2023_onyx_xt_tire_pressure_rr
                 style:
                   top: 75%
                   left: 13%
               - type: state-label
-                entity: sensor.2020_outback_onyx_xt_tire_pressure_rl
+                entity: sensor.2023_onyx_xt_tire_pressure_rl
                 style:
                   top: 75%
                   left: 39%
               - type: state-label
-                entity: sensor.2020_outback_onyx_xt_tire_pressure_fr
+                entity: sensor.2023_onyx_xt_tire_pressure_fr
                 style:
                   top: 83%
                   left: 57%
               - type: state-label
-                entity: sensor.2020_outback_onyx_xt_tire_pressure_fl
+                entity: sensor.2023_onyx_xt_tire_pressure_fl
                 style:
                   top: 80%
                   left: 81%
               - type: state-label
-                entity: sensor.2020_outback_onyx_xt_odometer
+                entity: sensor.2023_onyx_xt_odometer
                 title: Odometer
                 style:
                   top: 20%
                   left: 90%
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: binary_sensor.2020_outback_onyx_xt_ignition
-                name: Ignition
-                show_state: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: lock.2020_outback_onyx_xt_door_lock
-                show_state: true
-                name: Door Lock
+              - type: state-icon
+                entity: binary_sensor.2023_onyx_xt_ignition
+                title: null
+                style:
+                  top: 10%
+                  left: 90%
           - type: horizontal-stack
             cards:
               - type: gauge
-                entity: sensor.2020_outback_onyx_xt_12v_battery_voltage
-                min: 11
-                max: 15
+                entity: sensor.2023_onyx_xt_range
+                min: 0
+                max: 420
+                name: Range
                 severity:
-                  green: 12
-                  yellow: 11.5
-                  red: 11
-                name: Battery
+                  green: 150
+                  yellow: 100
+                  red: 50
               - type: gauge
-                entity: sensor.2020_outback_onyx_xt_avg_fuel_consumption
-                min: 15
-                name: Avg Fuel Consumption
-                max: 30
-                severity:
-                  green: 25
-                  yellow: 23
-                  red: 20
+                entity: sensor.2023_onyx_xt_fuel_level
+                min: 0
+                max: 100
+          - type: horizontal-stack
+            cards:
+              - type: custom:canvas-gauge-card
+                entity: sensor.2023_onyx_xt_avg_fuel_consumption
+                card_height: 220
+                gauge:
+                  type: radial-gauge
+                  title: Avg. MPG
+                  width: 220
+                  height: 220
+                  borderShadowWidth: 0
+                  borderOuterWidth: 0
+                  borderMiddleWidth: 0
+                  borderInnerWidth: 0
+                  needleType: arrow
+                  minValue: 0
+                  maxValue: 35
+                  startAngle: 43
+                  ticksAngle: 275
+                  valueBox: true
+                  valueBoxBorderRadius: 1
+                  colorValueBoxRect: '#111'
+                  colorValueBoxRectEnd: '#555'
+                  valueDec: 1
+                  valueInt: 0
+                  majorTicks:
+                    - '00'
+                    - '05'
+                    - '10'
+                    - '15'
+                    - '20'
+                    - '25'
+                    - '30'
+                    - '35'
+                  highlights:
+                    - from: 0
+                      to: 5
+                      color: '#fa6e6e'
+                    - from: 5
+                      to: 10
+                      color: '#ff7b4e'
+                    - from: 10
+                      to: 15
+                      color: '#fd8f26'
+                    - from: 15
+                      to: 20
+                      color: '#eba800'
+                    - from: 20
+                      to: 25
+                      color: '#cac100'
+                    - from: 25
+                      to: 30
+                      color: '#98d800'
+                    - from: 30
+                      to: 35
+                      color: '#30ed13'
+                  minorTicks: 5
       - type: vertical-stack
         cards:
           - type: map
             entities:
-              - entity: device_tracker.2020_outback_onyx_xt_location
+              - entity: device_tracker.2023_onyx_xt_location
             dark_mode: true
-            hours_to_show: 24
+            hours_to_show: 183
             default_zoom: 12
             title: Outback Location
             aspect_ratio: '3:2'
           - type: entity
-            entity: sensor.2020_outback_onyx_xt_odometer
+            entity: sensor.2023_onyx_xt_odometer
             unit: Miles
+  - icon: mdi:fish
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: more-info
+                entity: switch.apex_skimmer
+                show_state: true
+                icon: mdi:kitesurfing
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: more-info
+                entity: switch.apex_heater
+                show_state: true
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: more-info
+                entity: switch.apex_co2
+                show_state: true
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: more-info
+                entity: switch.apex_pump_4_6
+                show_state: true
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: more-info
+                entity: switch.apex_ato
+                show_state: true
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: more-info
+                entity: switch.apex_light
+                show_state: true
+          - type: entities
+            entities:
+              - entity: switch.circulation_pump
+            title: Pumps
+            show_header_toggle: false
+            state_color: true
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.apex_tmp
+              - type: entity
+                entity: sensor.apex_ph
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.apex_micros
+                unit: mL
+                name: Micros
+              - type: entity
+                entity: sensor.apex_macros
+                unit: mL
+                name: Macros
+              - type: gauge
+                entity: sensor.apex_atovol
+                name: ATO Vol
+                min: 0
+                max: 14
+                needle: false
+                severity:
+                  green: 7
+                  yellow: 5
+                  red: 0
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.aquarium_power_watts
+                min: 0
+                max: 300
+              - type: gauge
+                entity: sensor.apex_amp_4
+                min: 0
+                max: 3
+          - type: history-graph
+            entities:
+              - entity: sensor.apex_amp_4
+              - entity: sensor.apex_ph
+              - entity: sensor.apex_tmp
+              - entity: sensor.apex_atovol
+            hours_to_show: 48
+            refresh_interval: 0
+  - title: ''
+    path: lab
+    theme: Google - Dark
+    icon: mdi:desktop-tower
+    badges: []
+    cards:
+      - type: gauge
+        entity: sensor.tasmotalab_energy_current
+        min: 0
+        max: 15
+        name: Lab Current Usage
+      - type: gauge
+        entity: sensor.tasmotalab_energy_power
+        min: 0
+        name: Lab Power Usage
+        max: 200
+      - type: gauge
+        entity: sensor.tasmotalab_energy_today
+        min: 0
+        max: 3
+        name: Lab Power Consumption
+      - type: gauge
+        entity: sensor.tasmotalab_energy_yesterday
+        name: Lab Power Consumption Yesterday
+        min: 0
+        max: 3
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            entity: sensor.ups_battery_runtime
+            min: 0
+            max: 2700
+            severity:
+              green: 2000
+              yellow: 1200
+              red: 600
+            name: Runtime
+          - type: entity
+            entity: sensor.ups_load
+          - type: entity
+            entity: sensor.ups_battery_charge
+            name: UPS Battery
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            name: Canon Pro-100 Ink Levels
+            icon: mdi:printer
+            hours_to_show: 1
+            points_per_hour: 1
+            align_state: right
+            show:
+              graph: bar
+              legend: false
+              state: false
+              fill: true
+              labels: false
+              points: false
+            entities:
+              - entity: sensor.canon_pro_100_series_black_bk
+                name: Black
+                color: '#292929'
+              - entity: sensor.canon_pro_100_series_gray
+                name: Gray
+                color: Gray
+              - entity: sensor.canon_pro_100_series_light_gray
+                name: Light Gray
+                color: '#D3D3D3'
+              - entity: sensor.canon_pro_100_series_photo_cyan
+                name: Photo Cyan
+                color: '#7FFFFF'
+              - entity: sensor.canon_pro_100_series_cyan
+                name: Cyan
+                color: Cyan
+              - entity: sensor.canon_pro_100_series_photo_magenta
+                name: Photo Magenta
+                color: '#ff80ff'
+              - entity: sensor.canon_pro_100_series_magenta
+                name: Magenta
+                color: Magenta
+              - entity: sensor.canon_pro_100_series_yellow
+                name: Yellow
+                color: Yellow
+          - type: custom:mini-graph-card
+            name: Canon TS6200 Ink Levels
+            icon: mdi:printer
+            hours_to_show: 1
+            points_per_hour: 1
+            align_state: right
+            show:
+              graph: bar
+              legend: false
+              state: false
+              fill: true
+              labels: false
+              points: false
+            entities:
+              - entity: sensor.canon_ts6200_series_black_bk
+                name: Black
+                color: '#333333'
+              - entity: sensor.canon_ts6200_series_black_pgbk
+                name: Photo Black
+                color: '#262626'
+              - entity: sensor.canon_ts6200_series_cyan
+                name: Cyan
+                color: Cyan
+              - entity: sensor.canon_ts6200_series_magenta
+                name: Magenta
+                color: Magenta
+              - entity: sensor.canon_ts6200_series_yellow
+                name: Yellow
+                color: Yellow
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: call-service
+          service: script.desktop_sleep
+          data: {}
+          target: {}
+        entity: script.desktop_sleep
+        name: Desktop Sleep
+        icon: mdi:desktop-tower-monitor
+        show_state: false
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Maintenance
+            show_header_toggle: false
+            show_state: false
+            entities:
+              - entity: zone.home
+                icon: mdi:restart
+                name: Home Assistant
+                tap_action:
+                  action: call-service
+                  service: homeassistant.restart
+          - type: custom:mushroom-update-card
+            entity: update.home_assistant_core_update
+          - type: custom:mushroom-update-card
+            entity: update.home_assistant_supervisor_update
+      - type: horizontal-stack
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: none
+            entity: script.reboot_docker1
+            hold_action:
+              action: call-service
+              service: script.reboot_docker1
+              data: {}
+              target: {}
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: none
+            entity: script.reboot_rtlsdr
+            hold_action:
+              action: call-service
+              service: script.reboot_rtlsdr
+              data: {}
+              target: {}
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: none
+            entity: script.reboot_rock
+            hold_action:
+              action: call-service
+              service: script.reboot_rock
+              data: {}
+              target: {}
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: none
+            entity: script.reboot_spotify
+            hold_action:
+              action: call-service
+              service: script.reboot_spotify
+              data: {}
+              target: {}
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: more-info
+        entity: button.maindesktop_sleep
+        name: Desktop Sleep
+        hold_action:
+          action: toggle
+  - theme: Google Dark Theme
+    icon: mdi:printer-3d-nozzle
+    title: 3D Printer
+    badges: []
+    cards:
+      - type: custom:threedy-card
+        base_entity: sensor.octoprint
+        name: Prusa Mini+
+        printer_type: Cantilever
+        camera_entity: camera.octoprint_camera
+        power_entity: switch.3dprinter_power
+        light_entity: light.wled_octoprint
+        always_show: true
+        monitored:
+          - Status
+          - FileName
+          - ETA
+          - Elapsed
+          - Remaining
+          - Hotend
+          - Bed
+        sensors:
+          Progress:
+            entity: sensor.octoprint_job_percentage
+          Status:
+            entity: sensor.octoprint_current_state
+          ETA:
+            entity: sensor.octoprint_estimated_finish_time
+          Hotend:
+            entity: sensor.octoprint_actual_tool0_temp
+          Bed:
+            entity: sensor.octoprint_actual_bed_temp
+        theme: Neumorphic
+        temperature_unit: C
+        round_temperature: true
+        round_time: true
+        scale: 1
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.octoprint_actual_tool0_temp
+                min: 0
+                max: 500
+                name: Nozzle
+              - type: gauge
+                entity: sensor.octoprint_actual_bed_temp
+                min: 0
+                max: 250
+                name: Bed
+          - type: glance
+            entities:
+              - entity: sensor.octoprint_target_tool0_temp
+              - entity: sensor.octoprint_target_bed_temp
+            show_icon: false
+            state_color: true
+          - type: gauge
+            entity: sensor.3d_printer_power
+            min: 0
+            max: 110
+            severity:
+              green: 0
+              yellow: 75
+              red: 100
+            needle: true
+      - type: vertical-stack
+        cards:
+          - type: gauge
+            entity: sensor.octoprint_job_percentage
+            min: 0
+            max: 100
+            name: Print Progress
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: 'octoprint '
+                name: Z Height
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.octoprint_start_time
+          - type: entity
+            entity: sensor.octoprint_estimated_finish_time
+          - type: entity
+            entity: sensor.octoprint_print_time
+          - type: entity
+            entity: sensor.octoprint_print_time_left
+          - type: entity
+            entity: sensor.octoprint_print_file
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: switch.octoprint_connect_to_printer
+                hold_action:
+                  action: toggle
+                name: Connection
+                theme: Google Dark Theme
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: switch.octoprint_pause_print
+                hold_action:
+                  action: toggle
+                name: Pause
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: switch.octoprint_shutdown_system
+                show_state: false
+                hold_action:
+                  action: toggle
+                name: Shutdown
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: switch.octoprint_emergency_stop
+                show_state: false
+                hold_action:
+                  action: toggle
+                name: STOP
+          - type: horizontal-stack
+            cards:
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: switch.3dprinter_power
+                hold_action:
+                  action: call-service
+                  service: switch.turn_on
+                  service_data: {}
+                  target:
+                    device_id: 5ae20563c93c1a8bcaa3a228780461c8
+                show_state: false
+                name: Turn On
+                icon: mdi:power-on
+              - show_name: true
+                show_icon: true
+                type: button
+                entity: script.3d_printer_turn_off
+                icon: mdi:alert-decagram-outline
+                name: Shut Down Octoprnt
+                hold_action:
+                  action: call-service
+                  service: script.3d_printer_turn_off
+                  data: {}
+                  target: {}
+                tap_action:
+                  action: more-info
+  - icon: fas:random
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.garage_camera_on_off
+            icon: mdi:cctv
+            show_state: true
+            name: Garage Camera
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.ikea_of_sweden_tradfri_control_outlet_switch
+            icon: mdi:cctv
+            show_state: true
+            name: Basement Backyard Camera
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.basement_camera
+            show_state: true
+  - theme: Backend-selected
+    icon: mdi:exclamation
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - type: section
+                label: Living Room
+              - type: custom:mushroom-light-card
+                entity: light.living_room_main_lights
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+              - type: section
+                label: Office
+              - type: custom:mushroom-light-card
+                entity: light.office_main_lights
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+              - type: section
+                label: Kitchen & Dining Room
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.dining_room_main_lights
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.kitchen_counter
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.under_cabinet_lights
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.kitchen_accent_lights
+              - type: section
+                label: Bedroom
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.bedroomnightstand_zha_group
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.bathroomvanity_zha_group
+              - type: section
+                label: Upstairs
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.upstairs_nightstand_lights_zha_group
+              - type: section
+                label: Outdoors
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.porch_light
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.deck_upper
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.deck_lower
+              - type: section
+                label: Basement
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.basement_recessed_lights_zha_group
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-light-card
+                use_light_color: true
+                show_brightness_control: true
+                show_color_temp_control: true
+                show_color_control: true
+                collapsible_controls: true
+                entity: light.hvac_lab_zha_group
+                tap_action:
+                  action: toggle
+              - type: section
+                label: Misc.
+              - type: custom:mushroom-entity-card
+                entity: switch.plant_light
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.shelf_light
+                tap_action:
+                  action: toggle
+              - type: section
+                label: Media
+              - type: custom:mushroom-media-player-card
+                entity: media_player.sony_xbr_55x950g
+                fill_container: false
+                show_volume_level: true
+                use_media_info: true
+                volume_controls:
+                  - volume_mute
+                  - volume_set
+                  - volume_buttons
+                media_controls:
+                  - on_off
+                  - play_pause_stop
+                collapsible_controls: true
+              - type: custom:mushroom-media-player-card
+                entity: media_player.denon_avr_s750h
+                fill_container: false
+                show_volume_level: true
+                use_media_info: true
+                volume_controls:
+                  - volume_mute
+                  - volume_set
+                  - volume_buttons
+                media_controls:
+                  - on_off
+                  - play_pause_stop
+                collapsible_controls: true
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - type: section
+                label: Living Room
+              - type: custom:slider-entity-row
+                entity: light.living_room_main_lights
+                toggle: true
+                state_color: true
+                full_row: false
+              - type: section
+                label: Office
+              - type: custom:slider-entity-row
+                entity: light.office_main_lights
+                toggle: true
+                state_color: true
+                full_row: false
+              - type: section
+                label: Kitchen & Dining Room
+              - type: custom:slider-entity-row
+                entity: light.dining_room_main_lights
+                toggle: true
+                state_color: true
+              - type: custom:slider-entity-row
+                entity: light.kitchen_counter
+                toggle: true
+                state_color: true
+              - type: custom:slider-entity-row
+                entity: light.under_cabinet_lights
+                toggle: true
+                state_color: true
+              - type: custom:slider-entity-row
+                entity: light.kitchen_accent_lights
+                toggle: true
+                state_color: true
+              - type: section
+                label: Bedroom
+              - type: custom:slider-entity-row
+                entity: light.bedroomnightstand_zha_group
+                state_color: true
+                toggle: true
+                name: Bedroom
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.bathroomvanity_zha_group
+                state_color: true
+                name: Bathroom
+              - type: section
+                label: Upstairs
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.upstairs_nightstand_lights_zha_group
+                state_color: true
+              - type: section
+                label: Outdoors
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.porch_light
+                state_color: true
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.deck_upper
+                state_color: true
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.deck_lower
+                state_color: true
+              - type: section
+                label: Basement
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.basement_recessed_lights_zha_group
+                state_color: true
+                name: Basement Lights
+              - type: custom:slider-entity-row
+                toggle: true
+                entity: light.hvac_lab_zha_group
+                state_color: true
+                name: Lab and HVAC Light
+              - type: section
+                label: Misc.
+              - entity: switch.plant_light
+                state_color: true
+              - entity: switch.shelf_light
+                state_color: true
+              - type: section
+                label: Media
+              - entity: media_player.sony_xbr_55x950g
+                state_color: true
+                icon: mdi:television
+              - entity: media_player.denon_avr_s750h
+                state_color: true
+                icon: mdi:speaker-multiple
+              - entity: script.rocket_off
+                secondary_info: last-triggered
+  - icon: mdi:telescope
+    badges: []
+    cards:
+      - type: gauge
+        entity: sensor.sqmmeter_tsl2591_lux
+        min: 0
+        max: 88000
+        needle: true
+        name: Lux
+      - type: entities
+        entities:
+          - entity: sensor.sqmmeter_tsl2591_actual_gain
+            name: TSL2591 actual gain
+          - entity: sensor.sqmmeter_tsl2591_full_spectrum_light
+            name: TSL2591 full spectrum light
+          - entity: sensor.sqmmeter_tsl2591_infrared_light
+            name: TSL2591 infrared light
+          - entity: sensor.sqmmeter_tsl2591_lux
+            name: TSL2591 Lux
+          - entity: sensor.sqmmeter_tsl2591_visible_light
+            name: TSL2591 visible light
+        title: TSL2591 Lux Sensor
+      - type: custom:astroweather-card
+        entity: weather.astroweather_38_7936_90_7854
+        details: true
+        current: true
+        deepskydetails: true
+        forecast: true
+        graph: true
+        line_color_condition: '#f07178'
+        line_color_condition_night: '#eeffff'
+        line_color_cloudless: '#c3e88d'
+        line_color_seeing: '#ffcb6b'
+        line_color_transparency: '#82aaff'
+title: ''
